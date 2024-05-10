@@ -9,7 +9,7 @@ class ResearchCrewTasks:
           agent=agent,
           description=f"Gather and document 10 different current news stories from diverserse sources about everything in {inputs}.",
           expected_output=f"""
-          Summary of 10 different news stories to include headline, snippet and url or cite of original article. The stories must be relevant to everything in {inputs}
+          Summary of 10 different news stories to include headline, snippet and full url of original article. The stories must be relevant to everything in {inputs}
           """
       )
 
@@ -24,7 +24,7 @@ class ResearchCrewTasks:
        
         Headline/n
         Brief snippet or summary of the article, focusing on the key points./n
-        URL/n/n
+        FULL URL/n/n
        
 
           """
@@ -42,7 +42,7 @@ class ResearchCrewTasks:
        
         Headline/n
         Brief snippet or summary of the article, focusing on the key points./n
-        URL/n/n
+        FULL URL/n/n
        
 
             """
