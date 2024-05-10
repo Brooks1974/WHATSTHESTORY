@@ -7,9 +7,9 @@ class ResearchCrewTasks:
     def research_task(self, agent, inputs):
       return Task(
           agent=agent,
-          description=f"Systematically gather and document current and relevant news and articles from diverse sources about {inputs}. Use all available digital tools to ensure comprehensive coverage.",
+          description=f"Gather and document 10 different current news stories, articles and papers from diverserse sources about {inputs}.",
           expected_output=f"""
-          Detailed Research Report on {inputs} to include headline, snippet and url or cite of original article. This is going to be used as newsletter content so we want clear and diverse information on {inputs}
+          Summary of 10 different news stories to include headline, snippet and url or cite of original article. This is going to be used as newsletter content so we want clear and diverse information on {inputs}
           """
       )
 
@@ -20,13 +20,12 @@ class ResearchCrewTasks:
         context=context,
         description="Critically assess the accuracy, relevance, and depth of the information collected. Employ advanced data analysis methodologies to enhance the information's value, ensuring it meets the high standards required for expert assessment.",
         expected_output=f"""
-        Break each story up like this. We want at least 10 stories. 
-
-        *-*-*-*-*-*
-        Title/Headline 1
-        Brief snippet or summary of the article, focusing on the key points.
-        URL: Insert the URL of the original article or cite here
-        *-*-*-*-*-*
+        Present 10 stories in this format. 
+       
+        Headline/n
+        Brief snippet or summary of the article, focusing on the key points./n
+        URL/n/n
+       
 
           """
     )
@@ -39,11 +38,12 @@ class ResearchCrewTasks:
             description="Rewrite the 10 pieces of information provided by the Researcher and enhanced by the Analyst into a compelling, clear, and well-structured summary. Include key findings and appropriately cite all sources to ensure credibility and traceability. Apply just a small amount of wit.",
             expected_output=f"""
         
-        *-*-*-*-*-*
-        Title/Headline 1
-        Brief snippet or summary of the article, focusing on the key points.
-        URL: Insert the URL of the original article or cite here
-        *-*-*-*-*-*
+        Present 10 stories in this format. 
+       
+        Headline/n
+        Brief snippet or summary of the article, focusing on the key points./n
+        URL/n/n
+       
 
             """
         )
