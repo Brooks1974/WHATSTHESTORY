@@ -5,28 +5,22 @@ from crewai import Task
 class ResearchCrewTasks:
 
     def research_task(self, agent, inputs):
+      input_lines = inputs.split("\n")
+      subject = input_lines[0].split(":")[1].strip()
+      customer = input_lines[1].split(":")[1].strip()
+      additional_info = input_lines[2].split(":")[1].strip()
       return Task(
           agent=agent,
           description=f"Systematically gather and document current and relevant news and articles from diverse sources about {inputs}. Use all available digital tools to ensure comprehensive coverage.",
           expected_output=f"""
   Detailed Research Report on {inputs}
-  1. **Executive Summary**: A concise overview of the research findings, highlighting the most critical insights and conclusions drawn from the gathered data.
-  2. **Introduction**: Background information on why the research on {inputs} is crucial at this point in time. Include the scope of the research and the main objectives.
-  3. **Methodology**:
-    - **Sources Used**: List all sources utilized, including digital databases, news websites, and any subscriptions or specialized tools.
-    - **Search Criteria**: Describe the search criteria and keywords used to gather the relevant information.
-    - **Data Collection Process**: Outline the steps taken in the data collection process, including any automation tools or software used.
-  4. **Findings**:
-    - **Key Information Gathered**: Summarize the key information gathered from each source, categorized by relevance and impact on the topic.
-    - **Themes Identified**: Discuss any recurring themes or commonalities found across different sources.
-  5. **Analysis**:
-    - **Relevance to Current Trends**: Analyze how the findings relate to current trends or developments in the field.
-    - **Gaps in Information**: Highlight any noticeable gaps in information that could require further research.
-  6. **Conclusion**:
-    - **Summary of Findings**: Briefly reiterate the most critical findings and their implications.
-    - **Recommendations for Further Research**: Suggest areas where additional investigation could be beneficial based on gaps or emerging trends noted during the research.
-  7. **References**:
-    - **Full Citations**: Provide full citations for all sources used, formatted according to a recognized academic standard.
+        ###
+        Title/Headline 1
+        Brief snippet or summary of the article, focusing on the key points related to {subject} and {customer}.
+        URL: [Insert the URL of the original article here]
+        ###
+        
+        [Repeat the above format for approximately 25 stories]
           """
       )
 
