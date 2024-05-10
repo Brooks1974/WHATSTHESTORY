@@ -7,16 +7,16 @@ os.environ["OPENAI_API_KEY"] = st.secrets["OPENAI_API_KEY"]
 os.environ["SERPER_API_KEY"] = st.secrets["SERPER_API_KEY"]
 
 with st.sidebar:
-    st.header('Enter Research Details')
-    topic = st.text_input("Main topic of your research:")
-    detailed_questions = st.text_area("Specific questions or subtopics you are interested in exploring:")
-    key_points = st.text_area("Key points or specific information needed:")
+    st.header('Enter Newsletter Details Here')
+    subject = st.text_input("What's the subject?")
+    customer = st.text_area("Who is the customer or persona?")
+    additional_info = st.text_area("Any additional information -eg industry or region-")
 
 if st.button('Run Research'):
-    if not topic or not detailed_questions or not key_points:
+    if not customer or not subject or not additional_info:
         st.error("Please fill all the fields.")
     else:
-        inputs = f"Research Topic: {topic}\nDetailed Questions: {detailed_questions}\nKey Points: {key_points}"
+        inputs = f"Subject: {subject}\nCustomer: {customer}\nAdditional Information: {additional_info}"
         research_crew = ResearchCrew(inputs)
         result = research_crew.run()
         st.subheader("Results of your research project:")
