@@ -20,7 +20,7 @@ class ResearchCrewTasks:
           """
       )
 
-    def research_task(self, agent, inputs):
+    def research_task(self, agent, context, inputs):
       return Task(
         agent=agent,
         context=context,
@@ -34,7 +34,7 @@ class ResearchCrewTasks:
           """
     )
 
-    def research_task(self, agent, inputs):
+    def research_task(self, agent, context, inputs):
         return Task(
             agent=agent,
             context=context,
