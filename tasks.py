@@ -24,15 +24,13 @@ class ResearchCrewTasks:
       return Task(
         agent=agent,
         context=context,
-        description="Critically assess the accuracy, relevance, and depth of the information collected. Make sure each story is relevant. Employ advanced data analysis methodologies to enhance the information's value, ensuring it meets the high standards required for expert assessment. Return the top 10 stories. ",
+        description="Critically assess the accuracy, relevance, and depth of the information collected. Make sure each story is relevant. Employ advanced data analysis methodologies to enhance the information's value, ensuring it meets the high standards required for expert assessment. Return the top 5 stories. ",
         expected_output=f"""
         ###
         Title/Headline 1
         Brief snippet or summary of the article, focusing on the key points related to {inputs}.
         URL: [Insert the URL of the original article here]
         ###
-        
-        [Repeat the above format for approximately 10 stories]
           """
     )
 
@@ -40,7 +38,7 @@ class ResearchCrewTasks:
         return Task(
             agent=agent,
             context=context,
-            description="Synthesize the information provided by the Researcher and enhanced by the Analyst into a compelling, clear, and well-structured summary. Include key findings and appropriately cite all sources to ensure credibility and traceability.",
+            description="Synthesize the information provided by the Researcher and enhanced by the Analyst into a compelling, clear, and well-structured summary. Include key findings and appropriately cite all sources to ensure credibility and traceability. Tell me why each story is relevant.",
             expected_output=f"""
         ###
         Title/Headline 1
