@@ -37,11 +37,14 @@ class ResearchCrew:
 if __name__ == "__main__":
     print("Welcome to the Research Crew Setup")
     print("---------------------------------------")
-    topic = input("Please enter the main topic of your research: ")
-    detailed_questions = input("What specific questions or subtopics are you interested in exploring? ")
-    key_points = input("Are there any key points or specific information you need to be included in the research? ")
+    subject = input("What is the subject?")
+    customer = input("Who's the customer or segment?")
+    additional_info = input("Additional information")
 
-    inputs = f"Research Topic: {topic}\nDetailed Questions: {detailed_questions}\nKey Points: {key_points}"
+    inputs = f"Main subject: {subject}\nThe Customer: {customer}\nMore Information: {additional_info}"
+    subject = f"Subject {subject}"
+    customer = f"Subject {customer}"
+    additional_info = f"Subject {additional_info}"
     research_crew = ResearchCrew(inputs)
     result = research_crew.run()
 
