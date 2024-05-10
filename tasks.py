@@ -25,7 +25,11 @@ class ResearchCrewTasks:
       )
 
 
-    def analysis_task(self, agent, context):
+    def research_task(self, agent, inputs):
+      input_lines = inputs.split("\n")
+      subject = input_lines[0].split(":")[1].strip()
+      customer = input_lines[1].split(":")[1].strip()
+      additional_info = input_lines[2].split(":")[1].strip()
       return Task(
         agent=agent,
         context=context,
@@ -42,7 +46,11 @@ class ResearchCrewTasks:
     )
 
 
-    def writing_task(self, agent, context):
+    def research_task(self, agent, inputs):
+      input_lines = inputs.split("\n")
+      subject = input_lines[0].split(":")[1].strip()
+      customer = input_lines[1].split(":")[1].strip()
+      additional_info = input_lines[2].split(":")[1].strip()
         return Task(
             agent=agent,
             context=context,
