@@ -18,7 +18,7 @@ class ResearchCrewTasks:
       return Task(
         agent=agent,
         context=context,
-        description="Critically assess the accuracy, relevance, and depth of the information collected. Employ advanced data analysis methodologies to enhance the information's value, ensuring it meets the high standards required for expert assessment.",
+        description="Check the accuracy, relevance, and depth of the information collected.",
         expected_output=f"""
         Present 10 stories in this format. 
        
