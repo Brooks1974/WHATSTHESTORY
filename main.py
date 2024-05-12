@@ -49,6 +49,6 @@ if __name__ == "__main__":
     result = research_crew.run()
 
     print("\n\n##############################")
-    print("## Here are the results of your research project:")
+    print("## Here are the results:")
     print("##############################\n")
     print(result)

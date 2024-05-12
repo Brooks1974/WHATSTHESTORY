@@ -1,15 +1,22 @@
 from crewai import Task
-
-from crewai import Task
+from datetime import datetime
 
 class ResearchCrewTasks:
 
     def research_task(self, agent, inputs):
       return Task(
+          description=f"Fetch the top news stories about from the past 48 hours about {inputs}. Current time is {datetime.now()}",
           agent=agent,
-          description=f"Gather and document 10 different current news stories from diverserse sources about everything in {inputs}.",
-          expected_output=f"""
-          Summary of 10 different news stories to include headline, snippet and full url of original article. The stories must be relevant to everything in {inputs}
+          async_execution=True,
+          expected_output=f"""A list with story titles, URLS and a brief summary for each
+          Example output:
+          [
+            { 'title': 'Headline',
+             'url': 'https://example.com/story1',
+             'summary': 'SUMMARY GOES HERE'
+            },
+            {{...}}
+            ]
           """
       )
 
@@ -18,34 +25,41 @@ class ResearchCrewTasks:
       return Task(
         agent=agent,
         context=context,
-        description="Check the accuracy, relevance, and depth of the information collected.",
-        expected_output=f"""
-        Present 10 stories in this format. 
+        async_execution=True,
+        description="Analyze the news story and enure there are at least 5 well-fomatted articles",
+        expected_output=f""" A formatted analysis of each newsstory; includes a headline, rundown, details and why it matters section. Include the full url to the original story.
+        Present 5 stories in this format. 
        
-        Headline/n
-        Brief snippet or summary of the article, focusing on the key points./n
-        FULL URL/n/n
-       
+        Example output:
+        'HEADLINE'
+        ** The Rundown:
+        ** The Details:
+        ** Why it matters: 
+        ** Original URL: 
 
           """
     )
 
 
-    def writing_task(self, agent, context):
+    def writing_task(self, agent, context, callback_function):
         return Task(
             agent=agent,
             context=context,
-            description="In needed Rewrite the 10 pieces of information into a compelling, clear, and well-structured summary. Apply just a small amount of wit.",
+            description="A complete newsletter in markdown format with a consistent style and layout.",
             expected_output=f"""
         
-        Present 10 stories in this format. 
+        Present each of the 5 stories in this format. 
        
-        Headline/n
-        Brief snippet or summary of the article, focusing on the key points./n
-        FULL URL/n/n
+        Example output:
+        'HEADLINE'
+        ** The Rundown:
+        ** The Details:
+        ** Why it matters: 
+        ** Original URL: 
        
 
             """
+        callback=callback_function    
         )
 
 
