@@ -58,7 +58,7 @@ class ResearchCrewAgents:
         return Agent(
             role='Newsletter Compiler',
             goal='Compile the analyzed newsletter stories into a final newsletter format',
-            backstory='You are the final architect of the newsletter. Its your job to create a coherent and visually appealing newsletter that capivates our readers and remains consitant throughout'
+            backstory='You are the final architect of the newsletter. Its your job to create a coherent and visually appealing newsletter that capivates our readers and remains consitant throughout',
             verbose=True,
             llm=self.gpt4,
         )
