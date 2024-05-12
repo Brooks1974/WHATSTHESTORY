@@ -31,7 +31,7 @@ class ResearchCrewTasks:
         Present 5 stories in this format. 
        
         Example output:
-        'HEADLINE'
+        ** HEADLINE
         ** The Rundown:
         ** The Details:
         ** Why it matters: 
@@ -51,7 +51,7 @@ class ResearchCrewTasks:
         Present each of the 5 stories in this format. 
        
         Example output:
-        'HEADLINE'
+        ** HEADLINE
         ** The Rundown:
         ** The Details:
         ** Why it matters: 
