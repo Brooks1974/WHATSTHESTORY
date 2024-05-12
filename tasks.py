@@ -10,13 +10,12 @@ class ResearchCrewTasks:
           async_execution=True,
           expected_output=f"""A list with story titles, URLS and a brief summary for each
           Example output:
-          [
-            { 'title': 'Headline',
-             'url': 'https://example.com/story1',
-             'summary': 'SUMMARY GOES HERE'
-            },
-            {{...}}
-            ]
+       
+          ** HEADLINE
+          ** The Rundown:
+          ** The Details:
+          ** Why it matters: 
+          ** Original URL: 
           """
       )
 
