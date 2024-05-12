@@ -15,13 +15,28 @@ class ResearchCrewAgents:
         self.gpt3 = ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0.7)
         self.gpt4 = ChatOpenAI(model_name="gpt-4", temperature=0.7)
 
+#added in Editor
+    def editor(self):
+        # Detailed agent setup for the Editor
+        return Agent(
+            role='Newsletter Editor',
+            goal='Oversee the creation of the newsltter. Ensure it is relevant to recent stories in {input}',
+            backstory='You have a keen eye for detail and passion for storytelling. You ensure the newsletter is relevant to {inputs} and informs, engages and inspirses the readers.',            
+            verbose=True,
+            allow_delegation=True,
+            max_iter=15,
+            tools=[self.web],
+            llm=self.gpt4,
+        )
+
     def researcher(self):
         # Detailed agent setup for the Researcher
         return Agent(
             role='Research Expert',
-            goal='Find current news stories about everything in {input}',
-            backstory='You are a seasoned news hound with an insatiable appetite for the latest stories and a keen eye for identifying newsworthy content across various platforms. With years of experience navigating the ever-changing landscape of online media, from traditional news outlets to emerging social media channels, you have honed your skills in quickly locating and curating relevant, reliable, and impactful stories. Your deep understanding of search techniques, trending topics, and the nuances of each platform allows you to uncover hidden gems and breaking news with unparalleled efficiency. You are the go-to person for staying on the pulse of current events and providing a steady stream of valuable information to your team and audience.',            verbose=True,
-            allow_delegation=False,
+            goal='Find current news stories about {input}',
+            backstory='You search the internet for recent stories on {inputs}. You make sure our readers are always in the know',            
+            verbose=True,
+            allow_delegation=True,
             tools=[self.web],
             llm=self.gpt3,
         )
@@ -30,20 +45,20 @@ class ResearchCrewAgents:
         # Detailed agent setup for the Analyst
         return Agent(
             role='Data Analysis Specialist',
-            goal='Evaluate and enhance the information collected.',
-            backstory="With a journalism degree from a prestigious university and years of experience as a news editor and content strategist, you have mastered the art of distilling complex news stories into concise, engaging summaries. Your ability to quickly grasp the core elements of an article, filter out noise, and craft compelling narratives has earned you a reputation as a go-to source for news digests. From politics to technology, your summaries are known for their clarity, objectivity, and ability to capture the essence of a story in just a few paragraphs. Your work has been instrumental in helping busy executives, policymakers, and the general public stay informed and up-to-date on the most important developments across various fields.",            tools=[self.serper],
+            goal='Analyze each news story and generate a detailed markdown summary',
+            backstory='With a journalism degree from a prestigious university and years of experience as a news editor and content strategist your summaries are known for their clarity, objectivity, and ability to capture the essence of a story in just a few paragraphs. Your work has been instrumental in helping busy executives, policymakers, and the general public stay informed and up-to-date on the most important developments across various fields.',            
+            tools=[self.serper],
             verbose=True,
-            allow_delegation=False,
-            llm=self.gpt3,
+            allow_delegation=True,
+            llm=self.gpt4,
         )
 
     def writer(self):
         # Detailed agent setup for the Writer
         return Agent(
-            role='Master Storyteller and Technical Writer',
-            goal='Distill the essence of the news stories into elegant, compelling summaries that captivate readers and illuminate the critical connections between the subject matter and the target audience. Your prose is concise yet powerful, making even the most complex topics accessible and engaging.',            backstory="As a celebrated author and journalist with over twenty years of experience crafting stories that captivate and inform, you possess a unique flair for making intricate information accessible and engaging. Your writing has graced the pages of major publications and influential blogs, where your ability to elucidate complex concepts in an engaging manner has won you numerous accolades. In this role, you are the final architect, molding the raw analytical content into a final piece that is not only informative but also profoundly impactful.",
-            tools=[self.txt_tool],
+            role='Newsletter Compiler',
+            goal='Compile the analyzed newsletter stories into a final newsletter format',
+            backstory='You are the final architect of the newsletter. Its your job to create a coherent and visually appealing newsletter that capivates our readers and remains consitant throughout'
             verbose=True,
-            allow_delegation=False,
-            llm=self.gpt3,
+            llm=self.gpt4,
         )
