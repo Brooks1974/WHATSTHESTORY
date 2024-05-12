@@ -40,7 +40,7 @@ class ResearchCrewTasks:
     )
 
 
-    def writing_task(self, agent, context, callback_function):
+    def writing_task(self, agent, context):
         return Task(
             agent=agent,
             context=context,
@@ -57,8 +57,7 @@ class ResearchCrewTasks:
         ** Original URL: 
        
 
-            """,
-        callback=callback_function    
+            """ 
         )
 
 
